@@ -17,6 +17,11 @@
 ## 4.adım: GitHub repository üzerinden *devops_project* adında repository açalım.
 
 
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim.png">
+</p>
+
+
 
 ## 4.adım-1:git ayarlarınını user.name, user.password yapalım.
 ```

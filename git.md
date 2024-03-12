@@ -171,8 +171,6 @@ $ git clone githubURL
 
 ***<p align="center"> Picture- </p>***
 
-
-
 ---
 
 ## 11.adım: git log ve git status ne iş yapıyordu ?

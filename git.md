@@ -27,6 +27,9 @@ $ git config --global user.email "hamitmizrak@gmail.com"
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/5-adim-1.png">
 </p>
 
+
+
+
 ---
 
 ## 5.adım: Git nedir ? VCS açılımı nedir ? iyi bir commit özellikleri nelerdir ?
@@ -47,10 +50,12 @@ $ q
 </p>
 
 
-
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/8-adim-1.png">
 </p>
+
+
+
 
 ---
 
@@ -99,6 +104,7 @@ $ git clone githubURL
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/9-adim-3.png">
 </p>
+
 
 
 ---

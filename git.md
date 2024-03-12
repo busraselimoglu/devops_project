@@ -140,12 +140,7 @@ $ git clone githubURL
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/9-adim-3.png">
 </p>
-***<p align="center"> 
 
-
-
-
-</p>***
 ---
 
 ## 10.adım: En son commitimizin commit içeriğini değiştirilelim (tips: --amend)

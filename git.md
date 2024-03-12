@@ -27,7 +27,7 @@ $ git config --global user.name "hamitmizrak"
 $ git config --global user.email "hamitmizrak@gmail.com"
 ```
 <p align="center">
-  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/git-screen/5-adim-1.png">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/5-adim-1.png">
 </p>
 
 ## 6.adım: Linux komutlarıyları dizin adı "*devops*" ve dosya adı "*jenkins.txt*" oluşturalım ve "*DevOps öğreniyorum*" yazalım.

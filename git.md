@@ -142,7 +142,7 @@ $ git clone githubURL
 </p>
 
 
-
+---
 ---
 
 ## 10.adım: En son commitimizin commit içeriğini değiştirilelim (tips: --amend)
@@ -150,7 +150,7 @@ $ git clone githubURL
 `git commit --amend -m "an updated commit message"`
 
 
-
+ 
 
 ---
 

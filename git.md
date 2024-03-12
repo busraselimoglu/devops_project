@@ -26,7 +26,7 @@
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim1.png">
 </p>
 
-**<p align="center"> Picture-1 </p>**
+***<p align="center"> Picture-1 </p>***
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim2.png">

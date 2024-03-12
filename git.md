@@ -26,28 +26,28 @@
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim1.png">
 </p>
 
-<p style="text-align: center;">Picture-1</p>
-
+**<p style="text-align: center;">Picture-1</p>**
+**<p align="center"> Picture-1 </p>**
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim2.png">
 </p>
 
-<p style="text-align: center;">Picture-2</p>
+**<p style="text-align: center;">Picture-2</p>**
 
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim3.png">
 </p>
 
-<p style="text-align: center;">Picture-3</p>
+**<p style="text-align: center;">Picture-3</p>**
 
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim4.png">
 </p>
 
-<p style="text-align: center;">Picture-4</p>
+**<p style="text-align: center;">Picture-4</p>**
 
 
 ## 4.adım-1:git ayarlarınını user.name, user.password yapalım.

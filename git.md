@@ -171,12 +171,7 @@ $ git clone githubURL
 
 ***<p align="center"> Picture- </p>***
 
-<p align="center"> 
 
-
-
-
-</p>
 
 ---
 

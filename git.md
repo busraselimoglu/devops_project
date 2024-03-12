@@ -16,6 +16,9 @@
 
 ## 4.adım: GitHub repository üzerinden *devops_project* adında repository açalım.
 
+[title](https://github.com/) sitesine üye girişi yapılmalıdır. İki farklı yerden yeni repository oluşturulabilir.
+1. Dashboard'un sol tarafında yer alan **New** butonuna tıklanır. (*Picture-1*) Açılan sayfada ilgili alanlar doldurulur. (*Picture-4*)
+2. Dashboard'un sağ tarafında yer alan profil fotoğrafına tıklanır. (*Picture-1*) Sağ tarafta açılan menüden "*Your repositories*" tıklanır. (*Picture-2*) Sağ tarafında yer alan **New** butonuna tıklanır. (*Picture-3*) Açılan sayfada ilgili alanlar doldurulur. (*Picture-4*)
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim.png">

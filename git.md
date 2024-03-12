@@ -142,15 +142,38 @@ $ git clone githubURL
 </p>
 
 
----
+
 ---
 
 ## 10.adım: En son commitimizin commit içeriğini değiştirilelim (tips: --amend)
 
 `git commit --amend -m "an updated commit message"`
 
+> Diyelim ki yeni commit yaptınız ve commit log mesajınızda bir hata yaptınız. Hazırda hiçbir şey yokken bu komutu çalıştırmak, snaphot'ını (anlık görüntüsünü) değiştirmeden önceki commit'in mesajını düzenlemenizi sağlar.
 
+> Günlük geliştirmeleriniz sırasında her zaman erken commit'ler gerçekleşir. Bir dosyayı aşamalandırmayı unutmak veya commit mesajınızı yanlış şekilde biçimlendirmek her zaman yapılabilir hatalardır. Bu küçük hataları düzeltmek için --amend flag'ı kullanışlı bir yoldur.
+
+> En son hangi commit message attığımızı kontrol edelim. (*Picture-*) Visual Studio Code'un terminali üzerinden kodu çalıştırıyorum. (*Picture-*) Kod düzgün çalışıp çalışmadığını kontrol edelim. (*Picture-*) 
  
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim1.png">
+</p>
+
+***<p align="center"> Picture- </p>***
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim2.png">
+</p>
+
+***<p align="center"> Picture- </p>***
+
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim3.png">
+</p>
+
+***<p align="center"> Picture- </p>***
 
 ---
 

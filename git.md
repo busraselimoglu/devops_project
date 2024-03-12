@@ -17,11 +17,8 @@
 ## 4.adım: GitHub repository üzerinden *devops_project* adında repository açalım.
 
 
----
 
-## 5.adım: Git nedir ? VCS açılımı nedir ? iyi bir commit özellikleri nelerdir ?
-
-## 5.adım-1:git ayarlarınını user.name, user.password yapalım.
+## 4.adım-1:git ayarlarınını user.name, user.password yapalım.
 ```
 $ git config --global user.name "hamitmizrak"
 $ git config --global user.email "hamitmizrak@gmail.com"
@@ -29,6 +26,12 @@ $ git config --global user.email "hamitmizrak@gmail.com"
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/5-adim-1.png">
 </p>
+
+---
+
+## 5.adım: Git nedir ? VCS açılımı nedir ? iyi bir commit özellikleri nelerdir ?
+
+
 
 ## 6.adım: Linux komutlarıyları dizin adı "*devops*" ve dosya adı "*jenkins.txt*" oluşturalım ve "*DevOps öğreniyorum*" yazalım.
 ```
@@ -39,8 +42,13 @@ $ DevOps öğreniyorum
 $ q
 ```
 
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/5-adim-3.png">
+</p>
 
-
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/8-adim-1.png">
+</p>
 
 ---
 
@@ -59,8 +67,12 @@ $ git branch -M "main"
 $ git remote add origin https:…
 $ git push -u origin master
 ```
-
-
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/5-adim-2.png">
+</p>
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/8-adim-2.png">
+</p>
 
 
 
@@ -72,6 +84,14 @@ $ pwd
 $ git clone githubURL
 ```
 
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/9-adim-1.png">
+</p>
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/9-adim-1.png">
+</p>
 
 
 ---

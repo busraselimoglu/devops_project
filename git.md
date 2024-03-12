@@ -32,22 +32,24 @@
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim2.png">
 </p>
 
-**<p align="center"> Picture-2 </p>**
+***<p align="center"> Picture-2 </p>***
 
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim3.png">
 </p>
 
-**<p align="center"> Picture-3 </p>**
+***<p align="center"> Picture-3 </p>***
 
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim4.png">
 </p>
 
-**<p align="center"> Picture-4 </p>**
+***<p align="center"> Picture-4 </p>***
 
+
+---
 
 ## 4.adım-1:git ayarlarınını user.name, user.password yapalım.
 ```
@@ -66,6 +68,9 @@ $ git config --global user.email "hamitmizrak@gmail.com"
 ## 5.adım: Git nedir ? VCS açılımı nedir ? iyi bir commit özellikleri nelerdir ?
 
 
+
+
+---
 
 ## 6.adım: Linux komutlarıyları dizin adı "*devops*" ve dosya adı "*jenkins.txt*" oluşturalım ve "*DevOps öğreniyorum*" yazalım.
 ```
@@ -140,7 +145,9 @@ $ git clone githubURL
 
 ---
 
-## 10.adım: en son commitimizin commit içeriğini değiştirilelim (tips: --amend)
+## 10.adım: En son commitimizin commit içeriğini değiştirilelim (tips: --amend)
+
+`git commit --amend -m "an updated commit message"`
 
 
 

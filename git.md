@@ -35,7 +35,9 @@ $ cat >> jenkins.txt
 $ DevOps öğreniyorum
 $ q
 ```
-
+<p align="center">
+  <img width="250" height="250" src="https://github.com/busraselimoglu/devops_project/blob/main/git-screen/5-adim-1.png">
+</p>
 
 
 

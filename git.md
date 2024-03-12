@@ -36,7 +36,7 @@ $ DevOps öğreniyorum
 $ q
 ```
 <p align="center">
-  <img width="500" height="250" src="https://github.com/busraselimoglu/devops_project/blob/main/git-screen/5-adim-1.png">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/git-screen/5-adim-1.png">
 </p>
 
 

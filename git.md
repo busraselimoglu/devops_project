@@ -90,7 +90,7 @@ $ git clone githubURL
 </p>
 
 <p align="center">
-  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/9-adim-1.png">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/9-adim-3.png">
 </p>
 
 

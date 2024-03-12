@@ -21,9 +21,31 @@
 2. Dashboard'un sağ tarafında yer alan profil fotoğrafına tıklanır. (*Picture-1*) Sağ tarafta açılan menüden "*Your repositories*" tıklanır. (*Picture-2*) Sağ tarafında yer alan **New** butonuna tıklanır. (*Picture-3*) Açılan sayfada ilgili alanlar doldurulur. (*Picture-4*)
 
 <p align="center">
-  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim.png">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim1.png">
 </p>
 
+<h3 style="text-align: center;">*Picture-1*</h3>
+
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim2.png">
+</p>
+
+<h3 style="text-align: center;">*Picture-2*</h3>
+
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim3.png">
+</p>
+
+<h3 style="text-align: center;">*Picture-3*</h3>
+
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim4.png">
+</p>
+
+<h3 style="text-align: center;">*Picture-4*</h3>
 
 
 ## 4.adım-1:git ayarlarınını user.name, user.password yapalım.

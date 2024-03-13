@@ -494,12 +494,228 @@ export PATH=${M2_HOME}/bin:${PATH}
 ***<p align="center"> Picture-44 </p>***
 
 
+• *Apache Tomcat*, java tabanlı web uygulamalarını yayınlamak için kullanılan web sunucusudur. Java, Java EE veya Java Teknolojileri içerisinde Java Servlet, JavaServer Pages, Java Expression Language, Java WebSocket gibi çeşitli teknolojiler yer alır.
 
+- Tomcat'i indirip kurmadan önce , Ubuntu ( OpenJDK ) için gerekli Java kurulumuna sahip olduğunuzdan emin olun. Aşağıdaki komutu kullanarak Java sürümünü kontrol edin. (*Picture-45*)
+
+`$ java -version`
+
+- OpenJDK'nız yoksa veya Java 8'den daha eski bir sürümünüz varsa, aşağıdaki komutu kullanarak OpenJDK yükleyin. (*Picture-45*)
+
+`$ sudo apt install default-jdk`
+
+
+- Güvenlik nedeniyle Tomcat'i root altında çalıştırmayın. Apache Tomcat hizmetini dizinden çalıştırmak için /opt/tomcat dizinine yeni bir grup ve sistem kullanıcısı oluşturun. (*Picture-45*)
+
+```
+$ sudo groupadd tomcat
+$ sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
+```
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/tomcat1.png">
+</p>
+
+***<p align="center"> Picture-45 </p>***
+
+- [Apache Tomcat](https://tomcat.apache.org/download-90.cgi) sitesine giderek hangi işletim sistemine sahip iseniz onu seçin. (*Picture-46*) 
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/tomcat2.png">
+</p>
+
+***<p align="center"> Picture-46 </p>***
+
+- İndirilen tomcat, tar.gz dosyasından çıkarın. /opt dizinin altına tomcat dizini oluşturun. tomcat dizinin içerisine tar.gz dosyasından çıkartılan dosyayı taşıyın. (*Picture-47*) 
+
+```
+$ sudo mkdir /opt/tomcat
+$ sudo tar -xzvf apache-tomcat-9.0.86.tar.gz -C /opt/tomcat --strip-components=1
+```
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/tomcat3.png">
+</p>
+
+***<p align="center"> Picture-47 </p>***
+
+- Oluşturduğunuz yeni Tomcat kullanıcısının (*Picture-45*) execute ayrıcalıkları yok ancak kurulum dizinine erişmesi gerekiyor. Dizin üzerinde execute ayrıcalıklarını ayarlamanız gerekir. Tomcat kurulumunun bulunduğu dizine gidin. (*Picture-48*) 
+
+`cd /opt/tomcat`
+
+- Aşağıda yer alan komut ile tomcat grubuna ve kullanıcısına kurulum dizini üzerinde grup ve kullanıcı sahipliği verin. (*Picture-48*) 
+
+`sudo sh -c 'chmod +x /opt/tomcat/bin/*.sh'`
+
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/tomcat4.png">
+</p>
+
+***<p align="center"> Picture-48 </p>***
+
+
+- Tomcat'i bir servis olarak kullanacağınız için bir systemd servis dosyası oluşturmanız gerekir. Dosyayı yapılandırmak için öncelikle JAVA_HOME yolunu bulmanız gerekir. Bu, Java kurulum paketinin tam konumudur. Bunu yapmak için, sistemden sistemde yüklü Java paketleri hakkında bilgi alın. Terminalde aşağıda yer alan komutu yazın. Çıktının gösterdiği gibi, Java'nın mevcut iki sürümü vardır. Buna göre, konumlarını gösteren iki yol da gösterir. Kullanmak istediğiniz sürümü seçin ve konumunu kopyalayın. Bununla birlikte, hizmet dosyasını oluşturmaya geçebilirsiniz. (*Picture-49*) 
+
+`sudo update-java-alternatives -l`
+
+- etc/system/system dizininde tomcat.service adı altında  dosyayı açın. (*Picture-49*)
+
+`sudo nano /etc/systemd/system/tomcat.service`
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/tomcat5.png">
+</p>
+
+***<p align="center"> Picture-49 </p>***
+
+
+- Dosya açıldığında, JAVA_HOME değerini bir önceki adımda bulduğunuz bilgilerle değiştirerek aşağıdaki içeriği kopyalayıp yapıştırın. Daha sonrasında kaydedip çıkın. (*Picture-50*)
+  >(Ctrl+X, followed by y[es] and Enter) 
+
+```
+[Unit]
+Description=Apache Tomcat Web Application Container
+After=network.target
+[Service]
+Type=forking
+User=tomcat
+Group=tomcat
+Environment="JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64"
+Environment="JAVA_OPTS=-Djava.security.egd=file:///dev/urandom -Djava.awt.headless=true"
+Environment="CATALINA_BASE=/opt/tomcat"
+Environment="CATALINA_HOME=/opt/tomcat"
+Environment="CATALINA_PID=/opt/tomcat/temp/tomcat.pid"
+Environment="CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC"
+ExecStart=/opt/tomcat/bin/startup.sh
+ExecStop=/opt/tomcat/bin/shutdown.sh
+[Install]
+WantedBy=multi-user.target
+```
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/tomcat6.png">
+</p>
+
+***<p align="center"> Picture-50 </p>***
+
+
+- Değişikliklerin gerçekleşmesi için sistem daemon'unu şu komutla yeniden yükleyin. (*Picture-51*)
+
+`sudo systemctl daemon-reload`
+
+- Artık Tomcat hizmetini başlatabilirsiniz. (*Picture-51*)
+`sudo systemctl start tomcat`
+
+- Apache Tomcat hizmetinin çalıştığını şu komutla doğrulayın. (*Picture-51*)
+`sudo systemctl status tomcat`
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/tomcat7.png">
+</p>
+
+***<p align="center"> Picture-51 </p>***
+
+- Sunucunuzu korumak için bir güvenlik duvarı kullanıyorsanız (kullanmanız gerektiği gibi), Tomcat arayüzüne erişemezsiniz. Tomcat, yerel ağınızın dışında olan 8080 numaralı bağlantı noktasını kullanır. Aşağıda yer alan komut ile trafiğe izin vermek için 8080 numaralı portu açın. (*Picture-53*)
+
+`sudo ufw allow 8080/tcp`
+
+- Bağlantı noktası açıksa, Apache Tomcat açılış sayfasını görebilmeniz gerekir. Tarayıcı penceresine aşağıda yer alan url yazın. (*Picture-52*)
+
+`http://localhost:8080`
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/tomcat8.png">
+</p>
+
+***<p align="center"> Picture-52 </p>***
+
+
+- Hizmetin düzgün çalıştığını doğruladıktan sonra, web yönetim arayüzünü kullanabilecek bir kullanıcı oluşturmanız gerekir. Bunu yapmak için kullanıcılar dosyasını açın ve düzenleyin. Kullanıcı dosyasını aşağıda yer alan komutla açın. (*Picture-53*)
+
+`$ sudo nano /opt/tomcat/conf/tomcat-users.xml`
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/tomcat9.png">
+</p>
+
+***<p align="center"> Picture-53 </p>***
+
+- Dosyadaki her şeyi silin ve aşağıdakileri ekleyin. (*Picture-54*)
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<tomcat-users>
+  <role rolename="manager-gui"/>
+  <role rolename="manager-script"/>
+  <role rolename="manager-jmx"/>
+  <role rolename="manager-status"/>
+  <role rolename="admin-gui"/>
+  <role rolename="admin-script"/>
+  <user username="admin" password="Your_Password" roles="manager-gui, manager-script, manager-jmx, manager-status, admin-gui, admin-script"/>
+</tomcat-users>
+```
+
+> "Your_Password" değerini tercih ettiğiniz güçlü bir parola ile değiştirdiğinizden emin olun. Dosyayı kaydedin ve çıkın.
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/tomcat10.png">
+</p>
+
+***<p align="center"> Picture-54 </p>***
+
+- Son olarak, uzaktan erişimi yapılandırmanız gerekir. Bu gereklidir. Varsayılan olarak, Tomcat'e yalnızca yerel makineden erişilebilir. İlk olarak, yönetici dosyasını açın. (*Picture-55*)
+
+`sudo nano /opt/tomcat/webapps/manager/META-INF/context.xml`
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/tomcat11.png">
+</p>
+
+***<p align="center"> Picture-55 </p>***
+
+- Ardından, 
+  a. herhangi bir yerden mi yoksa 
+  b. belirli bir IP adresinden mi erişim izni vereceğinize karar verin.
+
+a. Herkese açık hale getirmek için dosyaya aşağıdaki satırları ekleyin. (*Picture-56*)
+
+```
+<Context antiResourceLocking="false" privileged="true">
+<!--
+<Valve className="org.apache.catalina.valves.RemoteAddrValve"
+allow="127\.\d+\.\d+.d+|::1|0000:1" />
+-->
+</Context>
+```
+
+b. Belirli bir IP adresinden erişime izin vermek için, IP'yi aşağıdaki gibi önceki komuta ekleyin. (*Picture-56*)
+```
+<Context antiResourceLocking="false" privileged="true">
+<!--
+<Valve className="org.apache.catalina.valves.RemoteAddrValve"
+allow="127\.\d+\.\d+\.\d+|::1|0000:1|THE.IP.ADDRESS." />
+-->
+</Context>
+```
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/tomcat12.png">
+</p>
+
+***<p align="center"> Picture-56 </p>***
+
+- Aynı işlemi host-manager dosyası için de tekrarlayın. Dosyayı şu komutla açarak başlayın:
+
+`sudo nano /opt/tomcat/latest/webapps/host-manager/META-INF/context.xml`
+
+- Ardından 
+  a. herhangi bir yerden veya
+  b. belirli bir IP adresinden (önceki adımda olduğu gibi) erişim izni verilir.
 
 ---
 
 
-## 3.adım: port ayarları her bir uygulama için farklı portta olduğununda emin olalım ➔ Linux komut terminalinden derste yaptığımız  komutu kullanın
+## 3.adım: Port ayarları her bir uygulama için farklı portta olduğununda emin olalım ➔ Linux komut terminalinden derste yaptığımız  komutu kullanın
 ` netstat -nlptu `
 
 > localhost:80   *➔* nginx
@@ -507,6 +723,12 @@ localhost:8080   *➔* apache tomcat
 localhost:2222   *➔* docker container
 localhost:3333   *➔* Jenkins
 localhost:9000  *➔* sonarQube
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/3-adim.png">
+</p>
+
+***<p align="center"> Picture-57 </p>***
 
 ---
 

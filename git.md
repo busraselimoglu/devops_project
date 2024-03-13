@@ -902,8 +902,8 @@ $ git clone githubURL
 
 ## 11.adım: git log ve git status ne iş yapıyordu ?
 ```
-$ git log: bütün commitleri göstemek
-$ git status: dosyalar ne durumda
+$ git log    ➔ bütün commitleri göstemek
+$ git status ➔ dosyalar ne durumda
 ```
 
 
@@ -912,6 +912,7 @@ $ git status: dosyalar ne durumda
 ---
 
 ## 12.adım: backend adında branch oluşturalım. bu branche bir takım dizinler ekleyelim. commit yapalım. merge işleminde fast-forward yapalım
+
 ```
 $ git add .
 $ git commit -m "merge öncesinde commit"
@@ -927,7 +928,7 @@ $ git merge backend
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/12-adim.png">
 </p>
 
-***<p align="center"> Picture-72 </p>***
+***<p align="center"> Picture-72</p>***
 
 
 ---

@@ -1,5 +1,17 @@
 ## 1.adım: Sanal Makine üzerinde (VMBOX) Linux Ubuntu 22.0.4 LTS kuralım
 
+[Oracle VM VirtualBox](https://www.virtualbox.org/wiki/Downloads) sitesine giderek hangi işletim sistemine sahip iseniz onu seçin. (*Picture-1*) 
+
+
+Daha sonrasında indirin. (*Picture-2*)
+
+
+
+
+
+
+
+
 ---
 
 

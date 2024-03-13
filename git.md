@@ -977,7 +977,20 @@ $ git merge frontend --no-ff
 
 ***<p align="center"> Picture-75</p>***
 
-- 
+- Bağlantısını kurduğumuz projeye *devops* adında dizin oluşturalım. Dizinin içerisine *jenkins.txt* adında text dosyası oluşturup içine "DevOps öğreniyorum" yazalım. *(Picture-76)*
+
+```
+$ mkdir devops
+$ cd devops/
+$ cat >> jenkins.txt
+```
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/15-adim3.png">
+</p>
+
+***<p align="center"> Picture-76</p>***
+
 
 
 

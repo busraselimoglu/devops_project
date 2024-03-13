@@ -182,9 +182,319 @@ Kurulum tamamlandıktan sonra ubuntu sanal makineniz hazır. (*Picture-21*)
 
 ---
 
+## Sanal makine ilk kurulduğu zaman bazı hatalar vermektedir. Bunlardan bazıları aşağıda yer almaktadır. İlgili adımları takip edin.
+
+#### • Terminalde *"Kullanıcı sudoers dosyası içinde değil"* hatası alıyorsanız aşağıdaki komutları sırasıyla çalıştırın. Daha sonra sanal makinesini yineden başlatın.
+```
+$ su root
+$ apt-get install sudo -y
+$ adduser kullanıcıadınız sudo
+$ chmod 0440 /etc/sudoers
+```
+
+
+#### • Ubuntu Software uygulamasında güncelleme kısmında *"Unable to update "Snap Store": cannot refresh "snap-store": snap "snap-store" has running apps"* bu hatayı alıyorsanız aşağıdaki komutu çalıştırın.
+
+`$ snap-store --quit && sudo snap refresh snap-store`
+
+---
+
 
 ## 2.adım: kurulumları yapalım.
 > Git,JDK-17 , Maven, Apache Tomcat, Docker, Visual Studio codes, derste yüklediğimiz pluginleri yükleyelim (GitHub,maven,deployment vs.)
+
+• *Vim* metin düzenleyicidir. Kurulumu için aşağıdaki komutu çalıştırın. (*Picture-22*)
+
+`$ sudo apt install vim `
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/vim.png">
+</p>
+
+***<p align="center"> Picture-22 </p>***
+
+• *Visual Studio Code*, Microsoft tarafından Windows, Linux ve MacOS için geliştirilen bir kaynak kodu düzenleyicisidir. Kurulumu için aşağıdaki komutu çalıştırın. (*Picture-23*)
+
+`$ sudo snap install code --classic `
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/vscode.png">
+</p>
+
+***<p align="center"> Picture-23 </p>***
+
+• *rar*, bir dosya sıkıştırma ve arşivleme formatıdır. Kurulumu için aşağıdaki komutları çalıştırın. (*Picture-24*)
+
+```
+$ sudo apt install rar 
+$ sudo apt install unrar 
+```
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/rar.png">
+</p>
+
+***<p align="center"> Picture-24 </p>***
+
+• *gzip*, bir dosya sıkıştırma ve arşivleme formatıdır. Kurulumu için aşağıdaki komutları çalıştırın. (*Picture-25*)
+
+` $ sudo apt install gzip`
+
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/gzip.png">
+</p>
+
+***<p align="center"> Picture-25 </p>***
+
+• *ncal* komutu terminalde kolaylıkla takvim kullanabileceğiniz pratik bir komuttur. Kurulumu için aşağıdaki komutu çalıştırın. (*Picture-26*)
+
+`$ sudo snap install ncal`
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/ncal.png">
+</p>
+
+***<p align="center"> Picture-26 </p>***
+
+• *OpenSSH*  istemci-sunucu mimarisinde güvenli olmayan bir ağ üzerinden güvenli bir kanal sağlayan Güvenli kabuk protokolüne dayanan bir güvenli ağ yardımcı program paketidir. Kurulumu için aşağıdaki komutu çalıştırın. (*Picture-27*)
+
+`$ sudo snap install openssh-server -y`
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/openssh-server.png">
+</p>
+
+***<p align="center"> Picture-27 </p>***
+
+• *Nginx*  yüksek eş zamanlı çalışma kabiliyeti, yüksek performans ve düşük hafıza kullanımına odaklanılarak tasarlanmış bir Web sunucusudur. Aynı zamanda ters vekil sunucusu, yük dengeleyici ve HTTP ön belleği olarak da kullanılabilir. Kurulumu için aşağıdaki komutu çalıştırın. (*Picture-28*)
+
+`$ sudo snap install nginx -y`
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/nginx.png">
+</p>
+
+***<p align="center"> Picture-28 </p>***
+
+
+• *Net-tools*  kullanıcılara ihtiyaç duydukları her şeyi tek bir yerde sağlayan eksiksiz bir ağ araçları paketidir. Bu, ağ yardımcı programlarının en kapsamlı koleksiyonlarından biridir ve paket ayrıca yararlanabileceğiniz çok sayıda yönetim yardımcı programıyla birlikte gelir. Kurulumu için aşağıdaki komutu çalıştırın. (*Picture-29*)
+
+`$ sudo snap install net-tools`
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/net-tools.png">
+</p>
+
+***<p align="center"> Picture-29 </p>***
+
+• *curl*  çeşitli protokoller kullanarak, veri aktarımı sağlamak için kütüphane ve komut satırı aracı sunan bir bilgisayar yazılımı projesidir. *curl* ile URL işleminde, belirtilen URL başka bir adrese taşınmışsa yanıt olarak bu yönlendirme durumu dönecektir.  Kurulumu için aşağıdaki komutu çalıştırın. (*Picture-30*)
+
+`$ sudo snap install curl `
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/curl.png">
+</p>
+
+***<p align="center"> Picture-30 </p>***
+
+• *heroku*   bir cloud computing altyapı sağlayıcısıdır. 2007'de kurulan Heroku, o dönemde sadece Ruby dilini desteklerken; günümüzde Java, Node.js, Scala, Clojure, Python, PHP ile Go dilleri ve platformlarını desteklemektedir. Heroku, platformlarında işletim sistemi olarak Ubuntu'yu kullanmaktadır. Kurulumu için aşağıdaki komutu çalıştırın. (*Picture-31*)
+
+`$ sudo snap install heroku --classic `
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/heroku.png">
+</p>
+
+***<p align="center"> Picture-31 </p>***
+
+
+• *git* yazılım geliştirme süreçlerinde kullanılan bir versiyon kontrol sistemidir. Kurulumu için aşağıdaki komutu çalıştırın. (*Picture-32*)
+
+`$ sudo apt install git `
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/git1.png">
+</p>
+
+***<p align="center"> Picture-32 </p>***
+
+• *git*, konfigürasyonu için aşağıdaki adımları çalıştırın. (*Picture-33*)
+
+```
+$ git config --global user.name "busraselimoglu" 
+$ git config --global user.email "busra.selimogluu@gmail.com" 
+$ git config --global -l  ➔ Konfigürasyonun başarılı olup olmadığını kontrol eder.
+```
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/git2.png">
+</p>
+
+***<p align="center"> Picture-33 </p>***
+
+• *jdk (Java Development Kit)*, java tabanlı uygulamaları geliştirmek için kullanabileceğiniz bir yazılım paketidir. Java Runtime Environment, java programlarını çalıştırmak için gereken bir eklentidir. Java uygulamalarını geliştirmek için Java Geliştirme Seti gerekir. 
+- Bilgisayarınızda var mı, varsa versiyon numarası nedir öğrenmek için aşağıdaki komutu çalıştırın. (*Picture-34*)
+
+`$ java --version `
+
+- *jdk* indirmek için aşağıdaki komutu çalıştırın. (*Picture-34*)
+
+`$ sudo apt install openjdk-17-jre-headless `
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/jdk1.png">
+</p>
+
+***<p align="center"> Picture-34 </p>***
+
+- *jdk* versiyonunu elle kontrol etmek yerine repository ekleyin ve ardından güncelleyin. Bundan sonra doğrudan o repository'den ppa:openjdk/ppa kurulum yapabilirsiniz.  (*Picture-35*)
+
+`$ sudo add-apt-repository ppa:openjdk-r/ppa`
+
+- *jdk* doğru path bulabilmek için aşağıdaki gibi kontrol edebilirsiniz. (*Picture-35*)
+
+```
+$ ls /usr/lib/jvm/
+$ ls /usr/lib/jvm/java-17-openjdk-amd64
+```
+
+- *jdk* için PATH ve JAVA_HOME ayarlarını .bashrc içerisinde yapılmalıdır.  (*Picture-35*)
+
+`$ vim ~/.bashrc`
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/jdk2.png">
+</p>
+
+***<p align="center"> Picture-35 </p>***
+
+- .bashrc dosyanın en sonuna aşağıdaki komutları yazılmalıdır. Kaydedip çıkış yapmak için *"ESC"* tuşuna bas sonrada *":wq"* yaz. (*Picture-36*)
+
+```
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/
+export PATH=${PATH}:${JAVA_HOME}/bin
+```
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/jdk3.png">
+</p>
+
+***<p align="center"> Picture-36 </p>***
+
+- .bashrc dosyasında yapılan değişikliklerin çalışabilmesi .bashrc resetlenmesi gerekmektedir. (*Picture-37*)
+  
+  `$ source ~/.bashrc`
+
+- .PATH ve JAVA_HOME ayarlarının çalışıp çalışmadığını aşağıdaki komut ile kontrol edilmektedir. (*Picture-37*)
+  
+  `$ echo $JAVA_HOME`
+
+- .bashrc dosyasında yapılan değişikliklerin bazen algılanması uzun sürebiliyor. Bu yüzden alternatif olarak /etc/environment içerisine de yazılabilir (*Picture-37*)
+  
+  `$ sudo nano /etc/environment `
+
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/jdk4.png">
+</p>
+
+***<p align="center"> Picture-37 </p>***
+
+- /etc/environment içerisine JAVA_HOME yazmak yeterlidir. (*Picture-38*)
+  
+  `JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/ `
+
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/jdk5.png">
+</p>
+
+***<p align="center"> Picture-38 </p>***
+
+
+- /etc/environment dosyasında yapılan değişikliklerin çalışabilmesi /etc/environment resetlenmesi gerekmektedir. (*Picture-39*)
+  
+  `$ source ~/.bashrc`
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/jdk6.png">
+</p>
+
+***<p align="center"> Picture-39 </p>***
+
+
+• *Apache Maven*, projenizi geliştirirken projenin birden çok geliştirme ortamına uyumlu olmasını sağlar. Maven kendine özgü standartları vardır. Yapılan projeleride bu standartlara uygun geliştirilmesi gerekmektedir. Bu sayede yazılımcılar farklı bilgi düzeylerinde olsalar bile aynı standartlarda, aynı yapı içerisinde projeyi geliştirirler. 
+
+- [Apache Maven](https://maven.apache.org/download.cgi) sitesine giderek hangi işletim sistemine sahip iseniz onu seçin. (*Picture-40*) 
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/maven1.png">
+</p>
+
+***<p align="center"> Picture-40 </p>***
+
+- İndirilen setup dosyasını .tar.gz halinden çıkart ve /opt dizinine gönder. Daha sonrasında MAVEN_HOME ve PATH ayarlarını yapmak için /etc/profile.d/maven.sh dosyasına gidin. (*Picture-41*) 
+
+```
+$ sudo tar -xzf apache-maven-3.9.6-bin.tar.gz -C /opt
+$ sudo ln -s apache-maven-3.9.6/ /opt/maven
+$ sudo nano /etc/profile.d/maven.sh
+```
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/maven2.png">
+</p>
+
+***<p align="center"> Picture-41 </p>***
+
+- AVEN_HOME ve PATH ayarlarını yapmak için /etc/profile.d/maven.sh dosyasının içerisine aşağıdaki komutlar yazılmalıdır. (*Picture-42*) 
+
+```
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/
+export M2_HOME=/usr/local/maven
+export MAVE_HOME=/usr/local/maven
+export PATH=${M2_HOME}/bin:${PATH}
+```
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/maven3.png">
+</p>
+
+***<p align="center"> Picture-42  </p>***
+
+
+- Yapılan değişikleri çalışabilmesi /etc/profile.d/maven.sh resetlenmesi gerekmektedir. (*Picture-43*)
+
+`$ source /etc/profile.d/maven.sh`
+
+
+- *Maven*, versiyonu kontrol edelim. (*Picture-43*)
+
+`$ mvn -version`
+
+- Çalışmaması normal sadece ayarları yapıldı. Şimdi de indirilip kurulması gerekmektedir. (*Picture-43*)
+
+`$ sudo apt install maven`
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/maven4.png">
+</p>
+
+***<p align="center"> Picture-43 </p>***
+
+- *Maven*, versiyonu tekrardan kontrol edelim. (*Picture-44*)
+
+`$ mvn -version`
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/maven5.png">
+</p>
+
+***<p align="center"> Picture-44 </p>***
+
+
+
 
 ---
 

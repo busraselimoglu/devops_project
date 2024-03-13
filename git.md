@@ -714,7 +714,219 @@ allow="127\.\d+\.\d+\.\d+|::1|0000:1|THE.IP.ADDRESS." />
   a. herhangi bir yerden veya
   b. belirli bir IP adresinden (önceki adımda olduğu gibi) erişim izni verilir.
 
----
+
+• *Docker*, open source bir ‘container’ teknolojisidir. Docker, aynı işletim sistemi üzerinde, yüzlerce hatta binlerce birbirinden izole ve bağımsız containerlar sayesinde sanallaştırma sağlayan bir teknolojidir. Web uygulamalarımızın kolayca kurulumunu, testini, çalışmasını ve deploymentını sağlar. Bunun yanında sunucu maliyetlerini önemli ölçüde azaltır.
+
+> ***Docker Daemon***, hypervisor’ün dockerdaki karşılığıdır. Bütün CPU ve RAM vb gibi işletim sistemine ait işlerin yapıldığı bölümdür.
+
+> ***Container***, docker Daemon tarafından Linux çekirdeği içerisinde birbirinden izole olarak çalıştırılan process’lerin her birine verilen isimdir.
+
+> ***Image***, containerlar layer halindeki Image’lardan oluşur. Docker Image ise containerlara kurulacak ve run edilecek olan uygulamaların veya OS’lerin image dosyalarıdır. Örnek verecek olursak mysql, mongodb, redis, ubuntu, mariadb vs. 
+
+> ***Dockerfile***, aslında container içerisindeki imagelerin içeriklerinin ve tanımlamalarının gerekli tutulduğu dosyadır.
+
+> ***Docker Registry***, tıpkı github gibi geliştiriciler açık kaynaklı olarak docker imagelerini yükleyerek ve DockerHub’ta paylaşarak imagelerin bizim de indirip kullanmamıza olanak sağlıyorlar. Kısaca imagelar Docker Registrylerde tutuluyor. Örneğin siz postgres image’ını kullanmak istiyorsunuz; postgres image linkinden `docker pull postgres` komutu ile indirip artık bu image ile container oluşturabiliyorsunuz. Aslında github’a çok benziyor. Siz de kendiniz imageleri oluşturup yükleyip başkalarının da sizin yarattığınız imageları kullanmalarını sağlayabiliyorsunuz. İsterseniz Private olarak da register'inizi tutabilirsiniz. Docker bu hizmeti de size sunuyor.
+
+
+> ***Docker CLI***, kullanıcının Docker Daemon ile konuşmasını sağlayan, docker komutlarının çalıştırıldığı CLI ekranıdır.
+
+> ***Docker Compose***, compose, birden fazla containere sahip docker uygulamalarını tanımlamak ve çalıştırmak için kullanılır. Compose ile uygulamanızın servislerini configure etmek için bir YAML dosyası kullanılır. Ardından, tek bir komutla configure ettiğiniz ayarlar ile tüm servislerinizi oluşturup ve başlatabilirsiniz.
+
+
+- Öncelikle *Docker Engine* kurulması gerekmektedir.
+ 
+1. Docker'ın apt deposunu kurulmalıdır. Docker'ın resmi GPG anahtarını ekleyin. *(Picture-57)*
+
+```
+$ sudo apt-get update
+$ sudo apt-get install ca-certificates curl
+$ sudo install -m 0755 -d /etc/apt/keyrings
+$ sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+$ sudo chmod a+r /etc/apt/keyrings/docker.asc
+```
+
+- Depoyu Apt kaynaklarına ekleyin. *(Picture-57)*
+
+```
+$ echo \
+	  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+	  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+	  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+$ sudo apt-get update
+```
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/docker1.png">
+</p>
+
+***<p align="center"> Picture-57 </p>***
+
+- Docker paketlerini yükleyin. *(Picture-58)*
+
+`sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/docker2.png">
+</p>
+
+***<p align="center"> Picture-58 </p>***
+
+
+- Hello-world image çalıştırarak Docker Engine kurulumunun başarılı olduğunu doğrulayın. *(Picture-59)*
+
+`sudo docker run hello-world`
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/docker3.png">
+</p>
+
+***<p align="center"> Picture-59 </p>***
+
+2. Docker Engine'i yüklemek için Docker'ın apt deposunu kullanamıyorsanız, sürümünüz için deb dosyasını indirebilir ve manuel olarak yükleyebilirsiniz. Docker Engine'i her yükseltmek istediğinizde yeni bir dosya indirmeniz gerekir. 
+
+- [Docker Package](https://download.docker.com/linux/ubuntu/dists/.) sitesine gidin. Listeden ubuntu versiyonuzu seçin. Daha sonrasında pool/table gidin ve işletim sistemi mimarinizi seçin. Docker Engine, CLI, containerd ve Docker Compose paketleri için aşağıdaki deb dosyalarını indirin.
+		• containerd.io_<version>_<arch>.deb
+		• docker-ce_<version>_<arch>.deb
+		• docker-ce-cli_<version>_<arch>.deb
+		• docker-buildx-plugin_<version>_<arch>.deb
+		• docker-compose-plugin_<version>_<arch>.deb
+
+- .deb paketlerini yükleyin. Aşağıdaki örnekteki yolları Docker paketlerini indirdiğiniz yere göre güncelleyin. *(Picture-60)*
+
+```
+sudo dpkg -i ./containerd.io_<version>_<arch>.deb \
+		  ./docker-ce_<version>_<arch>.deb \
+		  ./docker-ce-cli_<version>_<arch>.deb \
+		  ./docker-buildx-plugin_<version>_<arch>.deb \
+		  ./docker-compose-plugin_<version>_<arch>.deb
+```
+
+- Hello-world image çalıştırarak Docker Engine kurulumunun başarılı olduğunu doğrulayın. Bu komut bir test imajını indirir ve bir container içinde çalıştırır. Container çalıştığında, bir onay mesajı yazdırır ve çıkar. *(Picture-60)*
+
+```
+$ sudo service docker start
+$ sudo docker run hello-world
+```
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/docker4.png">
+</p>
+
+***<p align="center"> Picture-60 </p>***
+
+- Şimdi ise *Docker Desktop* kurulumuna geçiyoruz. 
+
+1. Docker'ın paket deposunu kurun. Apt deposunu kullanarak yükleme *(Picture-57)* adımına bakın.
+
+2. En son versiyona sahip [DEB](https://desktop.docker.com/linux/main/amd64/139021/docker-desktop-4.28.0-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64&_gl=1*s7tjx0*_ga*MTAyMDY3MTU3MS4xNzA5MDY1MTQ2*_ga_XJWPQMJYHQ*MTcwOTA2NTE0NS4xLjEuMTcwOTA2Njg4MC42MC4wLjA.) paketini indirin. Paketi indirdikten sonra aşağıdaki komutları çalıştırın. *(Picture-61)*
+
+```
+$ sudo apt-get update
+$ sudo apt-get install ./docker-desktop-<version>-<arch>.deb
+```
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/docker5.png">
+</p>
+
+***<p align="center"> Picture-61 </p>***
+
+- Docker Desktop Başlatın. *(Picture-62)*
+
+`systemctl --user start docker-desktop`
+
+- Docker versiyonunu öğrenmek için birçok yöntem vardır. *(Picture-62)*
+
+```
+• docker compose version
+  Docker Compose version v2.17.3
+
+• docker --version
+  Docker version 23.0.5, build bc4487a
+
+• docker version
+  Client: Docker Engine - Community
+  Cloud integration: v1.0.31
+  Version:           23.0.5
+  API version:       1.42
+  <...>
+```
+
+`systemctl --user enable docker-desktop`
+
+`systemctl --user stop docker-desktop`
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/setup-screen/docker6.png">
+</p>
+
+***<p align="center"> Picture-62 </p>***
+
+#### Docker Desktop sign in olurken "Error: Unable to log in. You must initialize pass before logging in to Docker Desktop" bu hatayı alıyorsanız aşağıdaki adımları takip edin.
+
+```
+busra@bellis:~$ gpg --full-generate-key
+gpg (GnuPG) 2.2.27; Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Lütfen istediğiniz anahtarı seçiniz:
+   (1) RSA ve RSA (varsayılan)
+   (2) DSA ve Elgamal
+   (3) DSA (yalnız imzalamak için)
+   (4) RSA (sadece imzalamak için)
+  (14) Existing key from card
+Seçiminiz? 1
+RSA anahtarları 1024 bit ile 4096 bit arasında olmalı.
+İstediğiniz anahtar uzunluğu nedir? (3072) 3072
+İstenen anahtar uzunluğu: 3072 bit
+Lütfen anahtarın ne kadar süreyle geçerli olacağını belirtin.
+         0 = anahtar süresiz geçerli
+      <n>  = anahtar n gün geçerli
+      <n>w = anahtar n hafta geçerli
+      <n>m = anahtar n ay geçerli
+      <n>y = anahtar n yıl geçerli
+Anahtar ne kadar geçerli olacak? (0) 0
+Anahtar hep geçerli olacak
+Bu doğru mu? (e/H ya da y/N) y
+
+GnuPG anahtarınızı betimlemek için bir kullanıcı kimliği oluşturmaya ihtiyaç duyuyor.
+
+Adınız ve Soyadınız: busra
+E-posta adresiniz: busra@gmail.com
+Önbilgi: 
+Seçtiğiniz KULLANICI-KİMLİĞİ:
+    "busra <busra@gmail.com>"
+
+(A)dı ve Soyadı, (Y)orum, (E)posta alanlarını değiştir ya da (T)amam/Çı(k)? T
+Bir miktar rasgele bayt üretilmesi gerekiyor. İlk üretim sırasında biraz
+hareket (klavyeyi kullanmak, fareyi hareket ettirmek, disklerden yararlanmak)
+iyi olacaktır; bu yeterli rasgele bayt kazanmak için rasgele sayı
+üretecine yardımcı olur.
+Bir miktar rasgele bayt üretilmesi gerekiyor. İlk üretim sırasında biraz
+hareket (klavyeyi kullanmak, fareyi hareket ettirmek, disklerden yararlanmak)
+iyi olacaktır; bu yeterli rasgele bayt kazanmak için rasgele sayı
+üretecine yardımcı olur.
+gpg: anahtar xxxxxxxxxxxxxxxx son derece güvenli olarak imlendi.
+gpg: directory '/home/busra/.gnupg/openpgp-revocs.d' created
+gpg: revocation certificate stored as '/home/busra/.gnupg/openpgp-revocs.d/888XXXXXXXX88XXXXXXXX88888XXXXXXXXXXXXXX.rev'
+genel ve gizli anahtar üretildi ve imzalandı.
+
+pub   rsa3072 2024-02-26 [SC]
+      888XXXXXXXX88XXXXXXXX88888XXXXXXXXXXXXXX
+uid                      busraselimoglu <busra.selimogluu@gmail.com>
+sub   rsa3072 2024-02-26 [E]
+
+
+busra@bellis:~$ export GPGKEY=<xxxxxxxxxxxxxxxx>
+busra@bellis:~$ pass init 888XXXXXXXX88XXXXXXXX88888XXXXXXXXXXXXXX
+
+Daha sonra Docker Desktop uygulamasını yeniden başlatı ve sign in butonuna tıklayın
+
+```
+
+
+---s
 
 
 ## 3.adım: Port ayarları her bir uygulama için farklı portta olduğununda emin olalım ➔ Linux komut terminalinden derste yaptığımız  komutu kullanın
@@ -732,15 +944,15 @@ allow="127\.\d+\.\d+\.\d+|::1|0000:1|THE.IP.ADDRESS." />
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/3-adim.png">
 </p>
 
-***<p align="center"> Picture-57 </p>***
+***<p align="center"> Picture-63 </p>***
 
 ---
 
 ## 4.adım: GitHub repository üzerinden *devops_project* adında repository açalım.
 
 [Github](https://github.com/) sitesine üye girişi yapılmalıdır. İki farklı yerden yeni repository oluşturulabilir.
-1. Dashboard'un sol tarafında yer alan **New** butonuna tıklanır. (*Picture-58*) Açılan sayfada ilgili alanlar doldurulur. (*Picture-61*)
-2. Dashboard'un sağ tarafında yer alan profil fotoğrafına tıklanır. (*Picture-58*) Sağ tarafta açılan menüden "*Your repositories*" tıklanır. (*Picture-59*) Sağ tarafında yer alan **New** butonuna tıklanır. (*Picture-60*) Açılan sayfada ilgili alanlar doldurulur. (*Picture-61*)
+1. Dashboard'un sol tarafında yer alan **New** butonuna tıklanır. (*Picture-64*) Açılan sayfada ilgili alanlar doldurulur. (*Picture-67*)
+2. Dashboard'un sağ tarafında yer alan profil fotoğrafına tıklanır. (*Picture-64*) Sağ tarafta açılan menüden "*Your repositories*" tıklanır. (*Picture-65*) Sağ tarafında yer alan **New** butonuna tıklanır. (*Picture-66*) Açılan sayfada ilgili alanlar doldurulur. (*Picture-67*)
 
 
 
@@ -748,27 +960,27 @@ allow="127\.\d+\.\d+\.\d+|::1|0000:1|THE.IP.ADDRESS." />
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim1.png">
 </p>
 
-***<p align="center"> Picture-58 </p>***
+***<p align="center"> Picture-64 </p>***
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim2.png">
 </p>
 
-***<p align="center"> Picture-59 </p>***
+***<p align="center"> Picture-65 </p>***
 
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim3.png">
 </p>
 
-***<p align="center"> Picture-60 </p>***
+***<p align="center"> Picture-66 </p>***
 
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim4.png">
 </p>
 
-***<p align="center"> Picture-61 </p>***
+***<p align="center"> Picture-67 </p>***
 
 
 ---
@@ -782,14 +994,25 @@ $ git config --global user.email "busra.selimogluu@gmail.com"
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/5-adim-1.png">
 </p>
 
-***<p align="center"> Picture-62</p>***
+***<p align="center"> Picture-68</p>***
 
 
 
 ---
 
-## 5.adım: Git nedir ? VCS açılımı nedir ? iyi bir commit özellikleri nelerdir ?
+## 5.adım: Git nedir ? VCS açılımı nedir ? İyi bir commit özellikleri nelerdir ?
 
+Git bir versiyon kontrol sistemidir ve yazılım geliştirme süreçlerinde yaygın olarak kullanılır. Projenizin farklı versiyonlarını adım adım takip etmenizi sağlar. Bu, projenizin geçmiş versiyonlarına kolayca geri dönmenizi ve değişiklikleri izlemenizi sağlar.
+
+Git'i öğrenirken, diğer versiyon kontrol sistemlerinden (VSC ~ Version Control) bildiklerinizi unutmaya çalışmak önemlidir. Çünkü Git, bilgileri farklı bir şekilde depolar ve işler. Diğer sistemler dosya bazlı değişim listeleri şeklinde bilgileri saklarken, Git anlık görünümler serisi olarak saklar. Her commit veya kayıt anında, Git tüm dosyaların o anki durumunu fotoğraflar ve saklar. Bu, Git'in verileri nasıl sakladığı ve işlediği konusunda farklı bir düşünce yapısına sahip olduğu anlamına gelir.
+
+Git'in en büyük farkı, verileri nasıl sakladığıdır. Diğer sistemler dosya setleri ve dosyalardaki değişiklikler şeklinde saklarken, Git anlık görünüm akışı olarak düşünür ve saklar. Bu, Git'i güçlü bir araç haline getirir ve projelerinizde daha verimli bir şekilde çalışmanızı sağlar.
+
+Git'i kullanmanın bir nedeni de, projenizin farklı versiyonlarını yönetmek ve risklere karşı korumaktır. Örneğin, bir proje dosyasında bir değişiklik yapmak istediğinizde, doğrudan orijinal dosyayı değiştirmek yerine bir kopya oluşturarak değişiklikleri yapabilirsiniz. Böylece, bir hata ile karşılaştığınızda orijinal dosyaya geri dönebilirsiniz.
+
+Git, projenizin geliştirme sürecini yönetmek için güçlü bir araçtır ve riskleri en aza indirmenize yardımcı olur. Bu işlemleri tekrar tekrar kullanarak projenizi güvenli bir şekilde geliştirebilirsiniz.
+
+Bir commit'in kaliteli olması için belirli özelliklere dikkat etmek önemlidir. Commit mesajı, yapılan değişiklikleri kısa ve net bir şekilde ifade etmelidir. Commit mesajları kodun anlaşılmasında büyük rol oynamaktadır. Birçok değişikliği tek commit altında birleştirmemelisiniz. En önemlisi okunabilir, anlaşılabilir ve bakımı kolay olmalıdır.
 
 
 
@@ -808,13 +1031,13 @@ $ q
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/5-adim-3.png">
 </p>
 
-***<p align="center"> Picture-63</p>***
+***<p align="center"> Picture-69</p>***
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/8-adim-1.png">
 </p>
 
-***<p align="center"> Picture-64</p>***
+***<p align="center"> Picture-70</p>***
 
 
 ---
@@ -838,14 +1061,14 @@ $ git push -u origin master
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/5-adim-2.png">
 </p>
 
-***<p align="center"> Picture-65</p>***
+***<p align="center"> Picture-71</p>***
 
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/8-adim-2.png">
 </p>
 
-***<p align="center"> Picture-66</p>***
+***<p align="center"> Picture-72</p>***
 
 ---
 
@@ -860,13 +1083,13 @@ $ git clone githubURL
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/9-adim-1.png">
 </p>
 
-***<p align="center"> Picture-67</p>***
+***<p align="center"> Picture-73</p>***
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/9-adim-3.png">
 </p>
 
-***<p align="center"> Picture-68</p>***
+***<p align="center"> Picture-74</p>***
 
 ---
 
@@ -876,27 +1099,27 @@ $ git clone githubURL
 
 > Diyelim ki yeni commit yaptınız ve commit log mesajınızda bir hata yaptınız. Hazırda hiçbir şey yokken bu komutu çalıştırmak, snaphot'ını (anlık görüntüsünü) değiştirmeden önceki commit'in mesajını düzenlemenizi sağlar. Günlük geliştirmeleriniz sırasında her zaman erken commit'ler gerçekleşir. Bir dosyayı aşamalandırmayı unutmak veya commit mesajınızı yanlış şekilde biçimlendirmek her zaman yapılabilir hatalardır. Bu küçük hataları düzeltmek için --amend flag'ı kullanışlı bir yoldur.
 
-> En son hangi commit message attığımızı kontrol edelim. (*Picture-69*) Visual Studio Code'un terminali üzerinden kodu çalıştırıyorum. (*Picture-70*) Kod düzgün çalışıp çalışmadığını kontrol edelim. (*Picture-71*) 
+> En son hangi commit message attığımızı kontrol edelim. (*Picture-75*) Visual Studio Code'un terminali üzerinden kodu çalıştırıyorum. (*Picture-76*) Kod düzgün çalışıp çalışmadığını kontrol edelim. (*Picture-77*) 
  
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/10-adim1.png">
 </p>
 
-***<p align="center"> Picture-69 </p>***
+***<p align="center"> Picture-75 </p>***
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/10-adim2.png">
 </p>
 
-***<p align="center"> Picture-70</p>***
+***<p align="center"> Picture-76</p>***
 
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/10-adim3.png">
 </p>
 
-***<p align="center"> Picture-71 </p>***
+***<p align="center"> Picture-77 </p>***
 
 ---
 
@@ -928,7 +1151,7 @@ $ git merge backend
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/12-adim.png">
 </p>
 
-***<p align="center"> Picture-72</p>***
+***<p align="center"> Picture-78</p>***
 
 
 ---
@@ -954,30 +1177,30 @@ $ git merge frontend --no-ff
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/14-adim.png">
 </p>
 
-***<p align="center"> Picture-73</p>***
+***<p align="center"> Picture-79</p>***
 
 
 ---
 
 ## 15.adım: Başka bir github repository açalım ve bu sefer derste öğrendiğimiz SSH-KEY ile github veri gönderme yapalım. Linux komutlarıyları dizin adı "*devops*" ve dosya adı "*jenkins.txt*" oluşturalım ve "*DevOps öğreniyorum*" yazalım.
 
-- *"devops_project2"* adında repository açtım. *(Picture-74)*
+- *"devops_project2"* adında repository açtım. *(Picture-80)*
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/15-adim1.png">
 </p>
 
-***<p align="center"> Picture-74</p>***
+***<p align="center"> Picture-80</p>***
 
-- Oluşturduğumuz repository projemize ssh ile bağlantısını kuralım. *(Picture-75)*
+- Oluşturduğumuz repository projemize ssh ile bağlantısını kuralım. *(Picture-81)*
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/15-adim2.png">
 </p>
 
-***<p align="center"> Picture-75</p>***
+***<p align="center"> Picture-81</p>***
 
-- Bağlantısını kurduğumuz projeye *devops* adında dizin oluşturalım. Dizinin içerisine *jenkins.txt* adında text dosyası oluşturup içine "DevOps öğreniyorum" yazalım. *(Picture-76)*
+- Bağlantısını kurduğumuz projeye *devops* adında dizin oluşturalım. Dizinin içerisine *jenkins.txt* adında text dosyası oluşturup içine "DevOps öğreniyorum" yazalım. *(Picture-82)*
 
 ```
 $ mkdir devops
@@ -989,9 +1212,9 @@ $ cat >> jenkins.txt
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/15-adim3.png">
 </p>
 
-***<p align="center"> Picture-76</p>***
+***<p align="center"> Picture-82</p>***
 
-- Projemizi *SSH-keygen* ekleyelim. *(Picture-77)*
+- Projemizi *SSH-keygen* ekleyelim. *(Picture-83)*
 
 `ssh-keygen -t rsa -b 4096 -C "busra.selimogluu@gmail.com"`
 
@@ -999,7 +1222,7 @@ $ cat >> jenkins.txt
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/15-adim4.png">
 </p>
 
-***<p align="center"> Picture-77</p>***
+***<p align="center"> Picture-84</p>***
 
 
 
@@ -1034,7 +1257,7 @@ $ git stash drop stash@{0}
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/17-adim.png">
 </p>
 
-***<p align="center"> Picture-78</p>***
+***<p align="center"> Picture-85</p>***
 
 
 
@@ -1045,7 +1268,11 @@ $ git stash drop stash@{0}
 $ git config --global alias.graph "log --all --graph --decorate --oneline"
 $ git graph
 ```
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/18-adim.png">
+</p>
 
+***<p align="center"> Picture-86</p>***
 
 ---
 

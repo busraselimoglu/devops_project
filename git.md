@@ -721,10 +721,10 @@ allow="127\.\d+\.\d+\.\d+|::1|0000:1|THE.IP.ADDRESS." />
 ` netstat -nlptu `
 
 > localhost:80   *➔* nginx
-  localhost:8080   *➔* apache tomcat
-  localhost:2222   *➔* docker container
-  localhost:3333   *➔* Jenkins
-  localhost:9000  *➔* sonarQube
+> localhost:8080   *➔* apache tomcat
+> localhost:2222   *➔* docker container
+> localhost:3333   *➔* Jenkins
+> localhost:9000  *➔* sonarQube
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/3-adim.png">

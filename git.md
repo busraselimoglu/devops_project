@@ -189,7 +189,7 @@ Kurulum tamamlandıktan sonra ubuntu sanal makineniz hazır. (*Picture-21*)
 ---
 
 
-## 3.adım: port ayarları her bir uygulama için farklı portta olduğununda emin olalım ➔ Linux komut terminalinden derste yaptımız   
+## 3.adım: port ayarları her bir uygulama için farklı portta olduğununda emin olalım ➔ Linux komut terminalinden derste yaptığımız  komutu kullanın
 ` netstat -nlptu `
 
 ---

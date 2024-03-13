@@ -946,7 +946,7 @@ $ git checkout frontend
 $ git add .
 $ git commit -m " frontend "
 $ git checkout main
-$ git merge fronend --no-ff
+$ git merge frontend --no-ff
 ```
 
 

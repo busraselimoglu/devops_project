@@ -963,6 +963,23 @@ $ git merge frontend --no-ff
 
 - *"devops_project2"* adında repository açtım. *(Picture-74)*
 
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/15-adim1.png">
+</p>
+
+***<p align="center"> Picture-74</p>***
+
+- Oluşturduğumuz repository projemize ssh ile bağlantısını kuralım. *(Picture-75)*
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/15-adim2.png">
+</p>
+
+***<p align="center"> Picture-75</p>***
+
+- 
+
+
 
 ---
 

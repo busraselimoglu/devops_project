@@ -908,6 +908,7 @@ $ git status: dosyalar ne durumda
 
 
 
+
 ---
 
 ## 12.adım: backend adında branch oluşturalım. bu branche bir takım dizinler ekleyelim. commit yapalım. merge işleminde fast-forward yapalım

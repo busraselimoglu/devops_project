@@ -1044,7 +1044,13 @@ $ q
 
 ## 7.adım: Git staged area ve unstaged area nedir ?
 
+Öncelikle bu iki kavram kullanıcının iş akışını daha iyi yönetmesini sağlar. Dosyalar üzerindeki değişiklikleri daha dikkatli bir şekilde kontrol etmesine, projenin geçmişini ve kodun durumunu daha düzenli bir şekilde tutmayı sağlar.
 
+Bu iki terimde dosyalardaki değişiklikleri takip ederken nasıl yönetildiğini ortaya koymak için kullanılır.
+
+*"Unstaged area" (veya "working directory")*, projenin gerçek dosya sistemi üzerinde bulunan ve üzerinde çalışılan dosyaların bulunduğu alandır. Yani henüz git tarafından kontrol edilmeyen dosyalardır. En basit haliyle localde çalıştığınız dosyalardır.
+
+*Staged Area (Bekleyen Alan veya İndeks Alanı)*, git tarafından kontrol edilen dosyaların veya değişikliklerin geçici saklama yeridir. Staged area'ye eklenen dosyalar, bir sonraki commit işlemi sırasında dahil edileceklerdir. 
 
 
 ---
@@ -1128,8 +1134,10 @@ $ git clone githubURL
 $ git log    ➔ bütün commitleri göstemek
 $ git status ➔ dosyalar ne durumda
 ```
+*git log*, git deposundaki commit geçmişini görüntülemek için kullanılan komuttur. Bu komut, geçmişte yapılan commit'leri, her bir commit'in kim tarafından yapıldığını, ne zaman yapıldığını ve commit mesajını gösterir. 
 
 
+*git status*, git deposundaki çalışma dizininin (working directory) ve staged area'nın (bekleyen alan) durumunu gösteren komuttur. Bu komut, hangi dosyaların değiştirildiğini, hangi dosyaların staged area'ye eklenmiş olduğunu ve hangi dosyaların henüz takip edilmediğini belirtir.
 
 
 ---
@@ -1157,6 +1165,12 @@ $ git merge backend
 ---
 
 ## 13.adım: Git GUI ve Git CLI nedir ?
+
+Git GUI ve Git CLI, Git'i kullanmanın farklı yöntemleridir.
+
+*Git CLI (Command Line Interface - Komut Satırı Arayüzü)*, kullanıcılar, terminal kullanarak Git komutlarını doğrudan çalıştırabilirler.
+
+*Git GUI (Graphical User Interface - Grafiksel Kullanıcı Arayüzü)*, git komutlarını çalıştırmak için bir grafik kullanıcı arayüzü sağlar. Kullanıcılar, değişiklikleri görsel olarak görebilir, commit'ler oluşturabilir, dal oluşturabilir ve birleştirebilir, geçmişi inceleyebilir ve diğer Git işlemlerini gerçekleştirebilirler. 
 
 
 ---
@@ -1230,6 +1244,7 @@ $ cat >> jenkins.txt
 
 ## 16.adım: git stash nedir ?
 
+Commit işlemi ile dosyalarınızda yaptığınız değişiklikler kalıcı olarak repository'de kayıt altına alınır. Ancak günlük çalışmamızda bazen tam olarak bitmeyen değişiklikleri de kayıt altına almak isteyebiliriz. Örneğin bir değişiklik üzerinde çalışırken başka bir konu ile ilgili kritik bir sorun bildirildiğinde yapmakta olduğumuz işi yarım bırakıp yeni soruna odaklanmak zorunda kalabilirsiniz. Bu gibi durumlarda yeni sorun ile ilgilenmeye başlamak için önceki değişikliklerinizi kaybetmeden yeni ve temiz bir branch oluşturmalısınız. Yarım kalan değişiklikleri kayıt altına almak için git stash komutunu kullanmalısın.
 
 
 
@@ -1250,8 +1265,6 @@ $ git commit -m "stash sonrası commit"
 $ git push -u origin main
 $ git stash drop stash@{0}
 ```
-
->Commit işlemi ile dosyalarınızda yaptığınız değişiklikler kalıcı olarak repository'de kayıt altına alınır. Ancak günlük çalışmamızda bazen tam olarak bitmeyen değişiklikleri de kayıt altına almak isteyebiliriz. Örneğin bir değişiklik üzerinde çalışırken başka bir konu ile ilgili kritik bir sorun bildirildiğinde yapmakta olduğumuz işi yarım bırakıp yeni soruna odaklanmak zorunda kalabilirsiniz. Bu gibi durumlarda yeni sorun ile ilgilenmeye başlamak için önceki değişikliklerinizi kaybetmeden yeni ve temiz bir branch oluşturmalısınız. Yarım kalan değişiklikleri kayıt altına almak için git stash komutunu kullanmalısın.
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/17-adim.png">
@@ -1278,6 +1291,11 @@ $ git graph
 
 ## 19.adım: Rebesa ile merge arasındaki fark nedir ?
 
+*Merge*,genellikle farklı branch'lerin birleştirir, birleşik bir sonuç çıkar. Branch'ler birbirini etkilemez. Bu yüzden genellikle daha kolay ve daha az riskli kabul edilir.
+
+*Rebase*, bir branch'in değişikliklerini almak için bir başka branch'in geçmişini değiştirir. Yani, değişikliklerinizi başka bir branch'in üzerine yeniden uygular. Aslında daha düzenli geçmiş oluşturur çünkü değişiklikler bir branch'in sonuna eklenir. Yine de dikkatli kullanılması gerekmektedir. 
+
+Genellikle tek başına geliştirilen projelerde rebase sorun oluşturmaz lakin ortak projelerde ciddi kayıplar yaşanabilir.
 
 
 
@@ -1285,23 +1303,34 @@ $ git graph
 
 ## 20.adım: Git Conflict nedir ? Bir conflict yediğimizde ne yapmamız gerekiyor ?
 
+*Git conflict*, rebase veya merge işlemleri sırasında ortaya çıkan çakışmalardır. Git bu durumu size bildirir ve çatışmanın olduğu dosyaları belirtir. 
 
+Bir conflict olduğunda öncelikle git'in uyarısını dikkatlice incelemektir. Hatayı bulduktan sonra iki değişikliği birleştirmeniz gerekebilir veya sadece birini seçmeniz gerekebilir. Çözüme ulaştıktan sonra dosyaları kaydetmeyi  ve gereksiz git işaretlerini kaldırmayı unutmayın.Çözüme ulaştığınız yeri işaretleyerek git'e bildirin. Yani *git add* komutuyla yapılıyor. En sonunda commitleyin.
 
 
 ---
 
 ## 21.adım: git ignore nedir? (git tarafından takip edilmesini istemediğimiz dizinler ve/veya dosya için kullanılır.)
 
-
+*.gitignore*, git tarafından takip edilmesinin istemediğimiz dosyalardır. Mesela ne tür dosyalar; 
+  - Paket yöneticisinden indirilen bağımlılıklar,
+  - image ve video dosyalarınız(dosya boyutları çok fazla olabilir)
+  - IDE eklentileri( örneğin .vscode)
+  - Sadece kendi çalışma alanınızda olması gereken başkaları tarafından görülmemesi gereken dosyalarınız (veritabanınıza ilişkin konfigürasyonlar)
+  - API anahtarları, kimlik bilgileri veya hassas bilgiler içeren dosyalar(.env)
+  - Çalışma dizinizdeki geçici dosyalar
+  - Log dosyaları
+  - Yararsız sistem dosyaları (örneğin MacOS işletim sisteminin .DS_Store dosyası )
+  - Veya herhangi bir dosyanız da olabilir.
 
 
 
 ---
 
-## 22.adım: git tag v1.1 ? Bu komu ne iş yapar ?
+## 22.adım: git tag v1.1 ? Bu komut ne iş yapar ?
 > git tag *➔* projemizde tag vermemize yarar
 
-
+*git tag*, aslında commitlerimize etiket vermektir. Mesela projenizde temel işlemleri bittikten sonra etiket verirseniz projenizi inceleyenler o kısma kadar neler yaptığınızı anlayabilir.
 
 
 
@@ -1309,3 +1338,5 @@ $ git graph
 
 ## 23.adım: git diff 3b2f0ab 5a2b8de bu komut ne iş yapar ? NOT: 3b2f0ab 5a2b8de commit numarası
 > git diff *➔* iki commit veya dizinlerdeki değişiklikleri göstermek
+
+İki commit arasında hangi değişiklikler olduğunu görüntülmesi yapar. Bu sayede hata ayıklamada çok işe yarar.

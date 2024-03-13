@@ -950,14 +950,18 @@ $ git checkout main
 $ git merge frontend --no-ff
 ```
 
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/14-adim.png">
+</p>
 
+***<p align="center"> Picture-73</p>***
 
 
 ---
 
 ## 15.adım: Başka bir github repository açalım ve bu sefer derste öğrendiğimiz SSH-KEY ile github veri gönderme yapalım. Linux komutlarıyları dizin adı "*devops*" ve dosya adı "*jenkins.txt*" oluşturalım ve "*DevOps öğreniyorum*" yazalım.
 
-
+- *"devops_project2"* adında repository açtım. *(Picture-74)*
 
 
 ---

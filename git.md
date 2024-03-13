@@ -604,9 +604,11 @@ WantedBy=multi-user.target
 `sudo systemctl daemon-reload`
 
 - Artık Tomcat hizmetini başlatabilirsiniz. (*Picture-51*)
+
 `sudo systemctl start tomcat`
 
 - Apache Tomcat hizmetinin çalıştığını şu komutla doğrulayın. (*Picture-51*)
+
 `sudo systemctl status tomcat`
 
 <p align="center">
@@ -735,8 +737,8 @@ localhost:9000  *➔* sonarQube
 ## 4.adım: GitHub repository üzerinden *devops_project* adında repository açalım.
 
 [Github](https://github.com/) sitesine üye girişi yapılmalıdır. İki farklı yerden yeni repository oluşturulabilir.
-1. Dashboard'un sol tarafında yer alan **New** butonuna tıklanır. (*Picture-1*) Açılan sayfada ilgili alanlar doldurulur. (*Picture-4*)
-2. Dashboard'un sağ tarafında yer alan profil fotoğrafına tıklanır. (*Picture-1*) Sağ tarafta açılan menüden "*Your repositories*" tıklanır. (*Picture-2*) Sağ tarafında yer alan **New** butonuna tıklanır. (*Picture-3*) Açılan sayfada ilgili alanlar doldurulur. (*Picture-4*)
+1. Dashboard'un sol tarafında yer alan **New** butonuna tıklanır. (*Picture-58*) Açılan sayfada ilgili alanlar doldurulur. (*Picture-61*)
+2. Dashboard'un sağ tarafında yer alan profil fotoğrafına tıklanır. (*Picture-58*) Sağ tarafta açılan menüden "*Your repositories*" tıklanır. (*Picture-59*) Sağ tarafında yer alan **New** butonuna tıklanır. (*Picture-60*) Açılan sayfada ilgili alanlar doldurulur. (*Picture-61*)
 
 
 
@@ -744,40 +746,41 @@ localhost:9000  *➔* sonarQube
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim1.png">
 </p>
 
-***<p align="center"> Picture-1 </p>***
+***<p align="center"> Picture-58 </p>***
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim2.png">
 </p>
 
-***<p align="center"> Picture-2 </p>***
+***<p align="center"> Picture-59 </p>***
 
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim3.png">
 </p>
 
-***<p align="center"> Picture-3 </p>***
+***<p align="center"> Picture-60 </p>***
 
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/4-adim4.png">
 </p>
 
-***<p align="center"> Picture-4 </p>***
+***<p align="center"> Picture-61 </p>***
 
 
 ---
 
 ## 4.adım-1:git ayarlarınını user.name, user.password yapalım.
 ```
-$ git config --global user.name "hamitmizrak"
-$ git config --global user.email "hamitmizrak@gmail.com"
+$ git config --global user.name "busraselimoglu"
+$ git config --global user.email "busra.selimogluu@gmail.com"
 ```
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/5-adim-1.png">
 </p>
 
+***<p align="center"> Picture-62</p>***
 
 
 

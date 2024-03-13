@@ -808,12 +808,13 @@ $ q
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/5-adim-3.png">
 </p>
 
+***<p align="center"> Picture-63</p>***
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/8-adim-1.png">
 </p>
 
-
+***<p align="center"> Picture-64</p>***
 
 
 ---

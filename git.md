@@ -3,14 +3,182 @@
 [Oracle VM VirtualBox](https://www.virtualbox.org/wiki/Downloads) sitesine giderek hangi işletim sistemine sahip iseniz onu seçin. (*Picture-1*) 
 
 
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/1-adim1.png">
+</p>
+
+***<p align="center"> Picture-1 </p>***
+
+
 Daha sonrasında indirin. (*Picture-2*)
 
 
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/1-adim2.png">
+</p>
+
+***<p align="center"> Picture-2 </p>***
+
+İndirilen setup dosyasını çalıştırın. Açılan setup dosyasında ileri tuşuna basınız. (*Picture-3*)
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/1-adim3.png">
+</p>
+
+***<p align="center"> Picture-3 </p>***
 
 
+Oracle VM VirtualBox programını nereye kuracağını belirtmeniz gerekiyor. (*Picture-4*)
+> Dipnot: Birden fazla diske sahip iseniz Oracle VM VirtualBox programını istediğiniz diske kurulum yapabilirsiniz. 
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/1-adim4.png">
+</p>
+
+***<p align="center"> Picture-4 </p>***
 
 
+Oracle VM VirtualBox programı sanal makineler için NAT portları ve ip adresi oluşturması gerek. Setup kurulumunda bunu yaparken mevcut kullanılan ağda geçici olarak bağlantı kesilecektir. Bunun uyarısını vermektedir. (*Picture-5*)
 
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/1-adim5.png">
+</p>
+
+***<p align="center"> Picture-5 </p>***
+
+Oracle VM VirtualBox programın gerekli olduğu bağımlılıkları vardır. Bu bağımlılıklar bilgisayarınızda yüklü değilse setup kurulumunda kendisinin kurmasını teklif etmektedir. (*Picture-6*)
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/1-adim6.png">
+</p>
+
+***<p align="center"> Picture-6 </p>***
+
+Son kontrolleri yapmanız bekleme yeridir. Kurulum tamamlandıktan sonra değiştirilemez. Oracle VM VirtualBox programını silip, tekrardan yükleme yapılması gerekmektedir. (*Picture-7*)
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/1-adim7.png">
+</p>
+
+***<p align="center"> Picture-7 </p>***
+
+Kurulum tamamlanana kadar bekleyin. (*Picture-8*)
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/1-adim8.png">
+</p>
+
+***<p align="center"> Picture-8 </p>***
+
+
+Oracle VM VirtualBox programının kurulumu bittikten açılan sayfa "Kurulumdan sonra Oracle VM VirtualBox 7.0.13 uygulamasını başlat"  seçeneğini seçerseniz otomatik olarak programı başlatacaktır. (*Picture-9*)
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/1-adim9.png">
+</p>
+
+***<p align="center"> Picture-9 </p>***
+
+Sanal makineye yükleyeceğimiz Linux Ubuntu 22.0.4 LTS işletim sistemini indirelim. [Ubuntu](https://ubuntu.com/download/desktop) sitesine giderek iso dosyasını indirin. (*Picture-10*)
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/1-adim10.png">
+</p>
+
+***<p align="center"> Picture-10 </p>***
+
+Oracle VM VirtualBox programında yer alan *"Yeni"* butonuna tıklayın. (*Picture-11*)
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/1-adim12.png">
+</p>
+
+***<p align="center"> Picture-11 </p>***
+
+Sanal makinenin adını, nerede depolanacağını belirleyin. *Picture-10*'da indirmiş olduğunuz iso dosyasının konumunu buraya yazınız. (*Picture-12*)
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/1-adim13.png">
+</p>
+
+***<p align="center"> Picture-12 </p>***
+
+Ubuntu sanal makinesinde kullanacağını kullanıcı adı/parola belirleyin. (*Picture-13*)
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/1-adim14.png">
+</p>
+
+***<p align="center"> Picture-13 </p>***
+
+Bellek miktarını ve sanal işlemci sayısını belirleyiniz. (*Picture-14*)
+> Sanal makine kurulumu bittikten sonra da değiştirebileceğiniz ayarlardır.
+
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/1-adim15.png">
+</p>
+
+***<p align="center"> Picture-14 </p>***
+
+
+Disk boyutunu belirleyin. (*Picture-15*)
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/1-adim16.png">
+</p>
+
+***<p align="center"> Picture-15 </p>***
+
+Son kontrol sayfasıdır. Yaptığınız işlemlerden emin iseniz "Bitir" butonuna basınız. (*Picture-16*)
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/1-adim17.png">
+</p>
+
+***<p align="center"> Picture-16 </p>***
+
+Sanal makineyi çalıştırın. Çalıştırdığınızda * "Not in a hypervisor partion (HVP=0)"* hatası ile karşılaştıysanız bilgisayarınızın sanallaştırma özelliği disable (pasif) olduğu anlamına gelmektedir. Bu özelliği aktifleştirmek gerekmektedir. *"Denetim Masasını"* açın, *"Programlar ve Özellikler"* kısmına tıklayın. (*Picture-17*)
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/1-adim19.png">
+</p>
+
+***<p align="center"> Picture-17 </p>***
+
+*"Windows özelliklerini aç veya kapat"* kısmına tıklayın. (*Picture-18*)
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/1-adim20.png">
+</p>
+
+***<p align="center"> Picture-18 </p>***
+
+
+Liste içerisinden *"Hyper-V"* seçeneğinin işaretli olduğundan emin olun. Bilgisayarı yeniden başlatın. (*Picture-19*) Eğer hâlâ aynı hatayı alıyorsanız bios ayarlarına giderek *"Virtualization Technology "* disable demektir. *"Virtualization Technology "* enable yapın. Hata düzelecektir.
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/1-adim21.png">
+</p>
+
+***<p align="center"> Picture-19 </p>***
+
+Sanal makineyi çalıştırın. Kurulum tamamlanana kadar bekleyin.  (*Picture-20*)
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/1-adim22.png">
+</p>
+
+***<p align="center"> Picture-20 </p>***
+
+
+Kurulum tamamlandıktan sonra ubuntu sanal makineniz hazır. (*Picture-21*)
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/1-adim23.png">
+</p>
+
+***<p align="center"> Picture-21 </p>***
 
 ---
 

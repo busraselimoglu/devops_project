@@ -838,13 +838,14 @@ $ git push -u origin master
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/5-adim-2.png">
 </p>
 
+***<p align="center"> Picture-65</p>***
 
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/8-adim-2.png">
 </p>
 
-
+***<p align="center"> Picture-66</p>***
 
 ---
 
@@ -859,11 +860,13 @@ $ git clone githubURL
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/9-adim-1.png">
 </p>
 
-
+***<p align="center"> Picture-67</p>***
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/9-adim-3.png">
 </p>
+
+***<p align="center"> Picture-68</p>***
 
 ---
 
@@ -873,27 +876,27 @@ $ git clone githubURL
 
 > Diyelim ki yeni commit yaptınız ve commit log mesajınızda bir hata yaptınız. Hazırda hiçbir şey yokken bu komutu çalıştırmak, snaphot'ını (anlık görüntüsünü) değiştirmeden önceki commit'in mesajını düzenlemenizi sağlar. Günlük geliştirmeleriniz sırasında her zaman erken commit'ler gerçekleşir. Bir dosyayı aşamalandırmayı unutmak veya commit mesajınızı yanlış şekilde biçimlendirmek her zaman yapılabilir hatalardır. Bu küçük hataları düzeltmek için --amend flag'ı kullanışlı bir yoldur.
 
-> En son hangi commit message attığımızı kontrol edelim. (*Picture-*) Visual Studio Code'un terminali üzerinden kodu çalıştırıyorum. (*Picture-*) Kod düzgün çalışıp çalışmadığını kontrol edelim. (*Picture-*) 
+> En son hangi commit message attığımızı kontrol edelim. (*Picture-69*) Visual Studio Code'un terminali üzerinden kodu çalıştırıyorum. (*Picture-70*) Kod düzgün çalışıp çalışmadığını kontrol edelim. (*Picture-71*) 
  
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/10-adim1.png">
 </p>
 
-***<p align="center"> Picture- </p>***
+***<p align="center"> Picture-69 </p>***
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/10-adim2.png">
 </p>
 
-***<p align="center"> Picture- </p>***
+***<p align="center"> Picture-70 </p>***
 
 
 <p align="center">
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/10-adim3.png">
 </p>
 
-***<p align="center"> Picture- </p>***
+***<p align="center"> Picture-71 </p>***
 
 ---
 

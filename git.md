@@ -502,6 +502,12 @@ export PATH=${M2_HOME}/bin:${PATH}
 ## 3.adım: port ayarları her bir uygulama için farklı portta olduğununda emin olalım ➔ Linux komut terminalinden derste yaptığımız  komutu kullanın
 ` netstat -nlptu `
 
+> localhost:80   *➔* nginx
+localhost:8080   *➔* apache tomcat
+localhost:2222   *➔* docker container
+localhost:3333   *➔* Jenkins
+localhost:9000  *➔* sonarQube
+
 ---
 
 ## 4.adım: GitHub repository üzerinden *devops_project* adında repository açalım.

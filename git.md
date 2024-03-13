@@ -889,7 +889,7 @@ $ git clone githubURL
   <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/10-adim2.png">
 </p>
 
-***<p align="center"> Picture-70 </p>***
+***<p align="center"> Picture-70</p>***
 
 
 <p align="center">

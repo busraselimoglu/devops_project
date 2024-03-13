@@ -720,6 +720,15 @@ allow="127\.\d+\.\d+\.\d+|::1|0000:1|THE.IP.ADDRESS." />
 ## 3.adım: Port ayarları her bir uygulama için farklı portta olduğununda emin olalım ➔ Linux komut terminalinden derste yaptığımız  komutu kullanın
 ` netstat -nlptu `
 
+| Port | Service |
+| ----------- | ----------- |
+| localhost:80  |  nginx|
+| localhost:8080 | apache tomcat  |
+| localhost:2222 |  docker container |
+| localhost:7000 | Jenkins |
+| localhost:9000 |  sonarQube |
+
+
 > localhost:80   *➔* nginx
 > localhost:8080   *➔* apache tomcat
 > localhost:2222   *➔* docker container

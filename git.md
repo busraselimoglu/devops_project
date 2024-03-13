@@ -991,6 +991,15 @@ $ cat >> jenkins.txt
 
 ***<p align="center"> Picture-76</p>***
 
+- Projemizi *SSH-keygen* ekleyelim. *(Picture-77)*
+
+`ssh-keygen -t rsa -b 4096 -C "busra.selimogluu@gmail.com"`
+
+<p align="center">
+  <img width="1000" height="500" src="https://github.com/busraselimoglu/devops_project/blob/main/screenshot/git-screen/15-adim4.png">
+</p>
+
+***<p align="center"> Picture-77</p>***
 
 
 
@@ -1010,14 +1019,17 @@ stash araf adındaki stash çağırıp işleyip ve sonrasında silelim.
 
 ```
 $ git add .
-$ git stash --save "araf"
+$ git stash save "araf"
 $ git stash list
-$ git stash apply araf
+$ git stash apply stash@{0}
 $ git add .
 $ git commit -m "stash sonrası commit"
 $ git push -u origin main
-$ git stash drop araf
+$ git stash drop stash@{0}
 ```
+
+>Commit işlemi ile dosyalarınızda yaptığınız değişiklikler kalıcı olarak repository'de kayıt altına alınır. Ancak günlük çalışmamızda bazen tam olarak bitmeyen değişiklikleri de kayıt altına almak isteyebiliriz. Örneğin bir değişiklik üzerinde çalışırken başka bir konu ile ilgili kritik bir sorun bildirildiğinde yapmakta olduğumuz işi yarım bırakıp yeni soruna odaklanmak zorunda kalabilirsiniz. Bu gibi durumlarda yeni sorun ile ilgilenmeye başlamak için önceki değişikliklerinizi kaybetmeden yeni ve temiz bir branch oluşturmalısınız. Yarım kalan değişiklikleri kayıt altına almak için git stash komutunu kullanmalısın.
+
 
 
 ---
